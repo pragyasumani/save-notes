@@ -15,7 +15,9 @@ export class AppComponent {
   obj : NoteComponent = new NoteComponent();
   ctitle : string = "";
   ctext : string = "";
+  backgroundColor = "white";
   keyword = "";
+  displayFound= false;
   id = -1;
   tempArr : NoteComponent[] = [];
 
@@ -35,9 +37,10 @@ export class AppComponent {
     console.log(this.ctext); 
     this.obj = new NoteComponent();
     this.id = this.id + 1;
-    this.obj.createNote(this.ctitle, this.ctext, this.id);
+    this.obj.createNote(this.ctitle, this.ctext, this.id, this.backgroundColor);
     this.ctitle = "";
     this.ctext = "";
+    this.backgroundColor = "";
     this.arr.push(this.obj);
 
     console.log(this.arr.length);
@@ -54,17 +57,31 @@ export class AppComponent {
       if(value.id==arg.id)
         this.arr.splice(index,1);
     });
+    this.tempArr.forEach((value, index)=>{
+      if(value.id==arg.id)
+        this.tempArr.splice(index,1);
+    });
   }
 
   search(keywordToMatch : string){
+    this.tempArr = [];
     this.keyword = keywordToMatch;
     console.log(this.keyword);
     for(let x=0; x<this.arr.length; x++){
       if(this.arr[x].title===this.keyword){
         this.tempArr.push(this.arr[x]);
+        this.displayFound = true;
       }
     }
     console.log(this.tempArr);
+  }
+
+  displayOriginal(){
+    this.displayFound = false;
+  }
+
+  changeColorNote(color : any){
+    this.backgroundColor = color;
   }
 
   

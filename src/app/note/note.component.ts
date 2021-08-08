@@ -9,15 +9,17 @@ export class NoteComponent implements OnInit {
   title : string = "";
   content : string = "";
   id : number = -1;
+  backgroundColor : string = "white";
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  createNote(title : string, content : string, id : number){
+  createNote(title : string, content : string, id : number, backgroundColor : string){
     this.title = title;
     this.content = content;
     this.id = id; 
+    this.backgroundColor = backgroundColor;
   }
 }

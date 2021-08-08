@@ -11,13 +11,18 @@
                 <textarea class="innermain" id="content" name="content" rows="3" #content [(ngModel)]="ctext" placeholder="Write your note here..."></textarea>
             </div>
             <div>
-                <button class="bi bi-plus-square-fill" (click)="createNote()"></button>
-                <button class="bi bi-x-square-fill" (click)="collapse()"></button>
+                <button class="bi bi-circle-fill button" style="color: #45f4d7" value="#45f4d7" #cyanColor (click)="changeColorNote(cyanColor.value)"></button>
+                <button class="bi bi-circle-fill button" style="color: darksalmon" value="darksalmon" #darksalmonColor (click)="changeColorNote(darksalmonColor.value)"></button>
+                <button class="bi bi-circle-fill button" style="color: khaki" value="khaki" #khakiColor (click)="changeColorNote(khakiColor.value)"></button>
+                <button class="bi bi-circle-fill button" style="color: lavenderblush" value="lavenderblush" #lavenderblushColor (click)="changeColorNote(lavenderblushColor.value)"></button>
+                <button class="bi bi-circle-fill button" style="color: plum" value="plum" #plumColor (click)="changeColorNote(plumColor.value)"></button>
+                <button style=" margin: 2px;" class="bi bi-plus-square-fill button" (click)="createNote()"></button>
+                <button style=" margin: 2px;" class="bi bi-x-square-fill button" (click)="collapse()"></button>
             </div>
         </ng-template>                
 </div>
-<div *ngIf="keyword===''; else found">
-    <div *ngFor="let x of arr" class="note">
+<div *ngIf="!displayFound ; else found">
+    <div [ngStyle]="{'background-color': x.backgroundColor}" *ngFor="let x of arr" class="note">
         <div class="title">
             {{x.title}}
         </div>
@@ -30,15 +35,19 @@
     </div>
 </div>
 <ng-template #found>
-    <div *ngFor="let x of tempArr" class="note">
-        <div class="title">
-            {{x.title}}
+    <div>
+        <div [ngStyle]="{'background-color': x.backgroundColor}" *ngFor="let x of tempArr" class="note">
+            <div class="title">
+                {{x.title}}
+            </div>
+            <div>
+                {{x.content}}
+            </div>
+            <div>
+                <button class="bi bi-trash button" (click)="deleteNote(x)">Delete</button>
+            </div>
         </div>
-        <div>
-            {{x.content}}
-        </div>
-        <div>
-            <button class="bi bi-trash button" (click)="deleteNote(x)">Delete</button>
-        </div>
+        <button style="float:right" class="bi bi-x-square-fill" (click)="displayOriginal()"></button>
     </div>
+    
 </ng-template>
