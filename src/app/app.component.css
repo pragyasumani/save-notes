@@ -1,0 +1,33 @@
+.button {
+    background: none;
+    border: none;
+}
+.main{
+    margin-top: 5px;
+    border-radius: 15px;
+    border : 1px ridge grey;
+    height: auto;
+    width : 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.innermain {
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border : none;
+}
+.note{
+    border-radius: 15px;
+    border : 1px ridge grey;
+    width : 200px;
+    float : left;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.title{
+    font-weight : bold;
+}
